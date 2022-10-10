@@ -1,0 +1,227 @@
+:root {
+  --text-color: rgb(252, 243, 243);
+  --text-color-2: rgb(255, 255, 0);
+  --text-color-3: rgb(212, 212, 10);
+  --size-text-1: 2rem;
+  --size-title: 3rem;
+  --font-family-title: 'Anton', sans-serif;
+  --font-family-text: 'Hind Madurai', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: var(--font-family-text);
+  font-weight: 400;
+}
+
+body._lock {
+  overflow: hidden;
+}
+
+.container {
+  max-width: 130rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.wrapper {
+  min-height: 100%;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 4;
+  background-color: red;
+}
+
+.header__container {
+  max-width: 130rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 6.4rem;
+}
+
+.header__logo {
+  color: var(--text-color);
+  font-size: var(--size-title);
+  font-family: var(--font-family-title);
+  letter-spacing: 2px;
+  z-index: 5;
+}
+
+.header__logo span {
+  color: var(--text-color-2);
+}
+
+.header__menu-icon {
+  display: block;
+}
+
+.header__menu-lists {
+  display: flex;
+  align-items: center;
+}
+
+.header__menu-list {
+  position: relative;
+}
+
+.header__menu-list {
+  margin-right: 2rem;
+}
+
+.header__menu-link {
+  font-size: var(--size-text-1);
+  color: var(--text-color);
+  padding: 1.5rem 1rem;
+  font-weight: 600;
+}
+
+.header__menu-link.active {
+  color: var(--text-color-3);
+}
+
+.header__menu-link::after {
+  position: absolute;
+  content: '';
+  left: 50%;
+  bottom: -3px;
+  width: 0%;
+  height: 2px;
+  background-color: var(--text-color);
+  transition: .4s ease-in;
+}
+
+.header__menu-link:hover:after {
+  width: 100%;
+  left: 0;
+}
+
+@media (max-width: 769px) {
+  .header__menu-icon {
+    z-index: 5;
+    display: block;
+    position: relative;
+    width: 3rem;
+    height: 1.8rem;
+    cursor: pointer;
+  }
+
+  .header__menu-icon span,
+  .header__menu-icon:before,
+  .header__menu-icon::after {
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 10%;
+    background-color: var(--text-color);
+    transition: all 0.4s ease-in;
+  }
+
+  .header__menu-icon:before,
+  .header__menu-icon::after {
+    content: '';
+  }
+
+  .header__menu-icon::after {
+    bottom: 0;
+  }
+
+  .header__menu-icon::before {
+    top: 0;
+  }
+
+  .header__menu-icon span {
+    top: 50%;
+    transform: translate(0px, -50%) scale(1);
+  }
+
+  .header__menu-icon._active span {
+    transform: translate(0px, -50%) scale(0);
+  }
+
+  .header__menu-icon._active::after {
+    bottom: 50%;
+    transform: translate(0px, 50%) rotate(45deg);
+  }
+
+  .header__menu-icon._active::before {
+    top: 50%;
+    transform: translate(0px, -50%) rotate(-45deg);
+  }
+
+  .header__menu-body {
+    position: fixed;
+    overflow: auto;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: blue;
+    padding-top: 10rem;
+    transition: left .4s ease-out;
+  }
+
+  .header__menu-body._active {
+    left: 0;
+  }
+
+  .header__menu-body::before {
+    content: '';
+    position: fixed;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6.4rem;
+    background-color: red;
+
+  }
+
+  .header__menu-lists {
+    flex-direction: column;
+  }
+
+  .header__menu-list {
+    margin-bottom: 3rem;
+
+  }
+
+  .header__menu-link {
+    padding: 1rem 3rem;
+  }
+}
